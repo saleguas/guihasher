@@ -11,10 +11,13 @@ C:\Users\drale\source\repos\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.guihashe
 C:\Users\drale\Documents\GitHub\guihasher\bin\Debug\WindowsFormsApp2.exe.config
 C:\Users\drale\Documents\GitHub\guihasher\bin\Debug\WindowsFormsApp2.exe
 C:\Users\drale\Documents\GitHub\guihasher\bin\Debug\WindowsFormsApp2.pdb
-C:\Users\drale\Documents\GitHub\guihasher\obj\Debug\guihasher.csprojAssemblyReference.cache
 C:\Users\drale\Documents\GitHub\guihasher\obj\Debug\WindowsFormsApp2.guihasher.resources
 C:\Users\drale\Documents\GitHub\guihasher\obj\Debug\WindowsFormsApp2.Properties.Resources.resources
 C:\Users\drale\Documents\GitHub\guihasher\obj\Debug\guihasher.csproj.GenerateResource.cache
 C:\Users\drale\Documents\GitHub\guihasher\obj\Debug\guihasher.csproj.CoreCompileInputs.cache
 C:\Users\drale\Documents\GitHub\guihasher\obj\Debug\WindowsFormsApp2.exe
 C:\Users\drale\Documents\GitHub\guihasher\obj\Debug\WindowsFormsApp2.pdb
+C:\Users\drale\Documents\GitHub\guihasher\bin\Debug\WindowsFormsApp2.exe.manifest
+C:\Users\drale\Documents\GitHub\guihasher\bin\Debug\WindowsFormsApp2.application
+C:\Users\drale\Documents\GitHub\guihasher\obj\Debug\WindowsFormsApp2.exe.manifest
+C:\Users\drale\Documents\GitHub\guihasher\obj\Debug\WindowsFormsApp2.application
