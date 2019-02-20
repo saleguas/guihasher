@@ -58,6 +58,7 @@ namespace WindowsFormsApp2
 
         private void button2_Click(object sender, EventArgs e)
         {
+            Stream mystream;
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
             saveFileDialog1.Filter = "md5 files (*.md5)|*.md5";
@@ -66,10 +67,12 @@ namespace WindowsFormsApp2
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                if ((saveFileDialog1.OpenFile()) != null)
+                if ((mystream = saveFileDialog1.OpenFile()) != null)
                 {
+                    mystream.Close();
                     // Code to write the stream goes here.
                     generateMD5(origin.FileName, saveFileDialog1.FileName);
+
                 }
             }
         }

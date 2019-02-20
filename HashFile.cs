@@ -25,7 +25,6 @@ namespace WindowsFormsApp2
 
         public void generateFile(string path)
         {
-            MessageBox.Show(path);
             using (TextWriter tw = new StreamWriter(path ))
             {
                 tw.WriteLine(hash);
