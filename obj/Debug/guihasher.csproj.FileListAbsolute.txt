@@ -21,3 +21,4 @@ C:\Users\drale\Documents\GitHub\guihasher\bin\Debug\WindowsFormsApp2.exe.manifes
 C:\Users\drale\Documents\GitHub\guihasher\bin\Debug\WindowsFormsApp2.application
 C:\Users\drale\Documents\GitHub\guihasher\obj\Debug\WindowsFormsApp2.exe.manifest
 C:\Users\drale\Documents\GitHub\guihasher\obj\Debug\WindowsFormsApp2.application
+C:\Users\drale\Documents\GitHub\guihasher\obj\Debug\guihasher.csprojAssemblyReference.cache

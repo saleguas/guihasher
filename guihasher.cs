@@ -17,6 +17,8 @@ namespace WindowsFormsApp2
     {
         private OpenFileDialog origin;
         private HashFile md5File;
+        private HashFile sha1File;
+        private HashFile sha256File;
         private String fileName;
 
         public guihasher()
@@ -33,23 +35,39 @@ namespace WindowsFormsApp2
             fs.Close();
             md5File.generateFile(outpath);
         }
+
+        private void generateSHA1(string inpath, string outpath)
+        {
+            FileStream fs = File.OpenRead(inpath);
+            SHA1Managed sha1 = new SHA1Managed();
+            byte[] retn = sha1.ComputeHash(fs);
+            sha1File = new HashFile(ToHexString(retn), "sha1");
+            fs.Close();
+            sha1File.generateFile(outpath);
+        }
+
+        private void generateSHA256(string inpath, string outpath)
+        {
+            FileStream fs = File.OpenRead(inpath);
+            SHA256 mySHA256 = SHA256.Create();
+            byte[] retn = mySHA256.ComputeHash(fs);
+            sha256File = new HashFile(ToHexString(retn), "sha256");
+            fs.Close();
+            sha256File.generateFile(outpath);
+        }
+
         public static string ToHexString(byte[] ba)
         {
             return BitConverter.ToString(ba).Replace("-", "");
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            // Displays an OpenFileDialog so the user can select a Cursor.  
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Filter = "Any file|*.*";
             openFileDialog1.Title = "Select a File";
 
-            // Show the Dialog.  
-            // If the user clicked OK in the dialog and  
-            // a .CUR file was selected, open it.  
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                // Assign the cursor in the Stream to the Form's Cursor property.  
                 fileName = openFileDialog1.SafeFileName;
                 button1.Text = fileName;
                 origin = openFileDialog1;
@@ -70,7 +88,6 @@ namespace WindowsFormsApp2
                 if ((mystream = saveFileDialog1.OpenFile()) != null)
                 {
                     mystream.Close();
-                    // Code to write the stream goes here.
                     generateMD5(origin.FileName, saveFileDialog1.FileName);
 
                 }
@@ -80,6 +97,46 @@ namespace WindowsFormsApp2
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Stream mystream;
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+            saveFileDialog1.Filter = "sha1 files (*.sha1)|*.sha1";
+            saveFileDialog1.RestoreDirectory = true;
+            saveFileDialog1.FileName = origin.SafeFileName + ".sha1";
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if ((mystream = saveFileDialog1.OpenFile()) != null)
+                {
+                    mystream.Close();
+                    generateSHA1(origin.FileName, saveFileDialog1.FileName);
+
+                }
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Stream mystream;
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+            saveFileDialog1.Filter = "sha256 files (*.sha256)|*.sha256";
+            saveFileDialog1.RestoreDirectory = true;
+            saveFileDialog1.FileName = origin.SafeFileName + ".sha256";
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if ((mystream = saveFileDialog1.OpenFile()) != null)
+                {
+                    mystream.Close();
+                    generateSHA256(origin.FileName, saveFileDialog1.FileName);
+
+                }
+            }
         }
     }
 }
