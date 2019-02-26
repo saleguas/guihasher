@@ -19,6 +19,8 @@ namespace WindowsFormsApp2
         private HashFile md5File;
         private HashFile sha1File;
         private HashFile sha256File;
+        private HashFile sha384File;
+        private HashFile sha512File;
         private String fileName;
 
         public guihasher()
@@ -54,6 +56,28 @@ namespace WindowsFormsApp2
             sha256File = new HashFile(ToHexString(retn), "sha256");
             fs.Close();
             sha256File.generateFile(outpath);
+        }
+
+        private void generateSHA384(string inpath, string outpath)
+        {
+            FileStream fs = File.OpenRead(inpath);
+            SHA384 mySHA384 = SHA384.Create();
+            byte[] retn = mySHA384.ComputeHash(fs);
+            sha384File = new HashFile(ToHexString(retn), "sha384");
+            fs.Close();
+            sha384File.generateFile(outpath);
+        }
+
+        private void generateSHA512(string inpath, string outpath)
+        {
+            FileStream fs = File.OpenRead(inpath);
+            SHA512 mySHA512 = SHA512.Create();
+            byte[] retn = mySHA512.ComputeHash(fs);
+            sha512File = new HashFile(ToHexString(retn), "sha512");
+            fs.Close();
+            sha512File.generateFile(outpath);
+            sha512File.generateFile(outpath);
+            sha512File.generateFile(outpath);
         }
 
         public static string ToHexString(byte[] ba)
@@ -138,5 +162,46 @@ namespace WindowsFormsApp2
                 }
             }
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Stream mystream;
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+            saveFileDialog1.Filter = "sha384 files (*.sha384)|*.sha384";
+            saveFileDialog1.RestoreDirectory = true;
+            saveFileDialog1.FileName = origin.SafeFileName + ".sha384";
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if ((mystream = saveFileDialog1.OpenFile()) != null)
+                {
+                    mystream.Close();
+                    generateSHA384(origin.FileName, saveFileDialog1.FileName);
+
+                }
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Stream mystream;
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+            saveFileDialog1.Filter = "sha512 files (*.sha512)|*.sha512";
+            saveFileDialog1.RestoreDirectory = true;
+            saveFileDialog1.FileName = origin.SafeFileName + ".sha512";
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if ((mystream = saveFileDialog1.OpenFile()) != null)
+                {
+                    mystream.Close();
+                    generateSHA512(origin.FileName, saveFileDialog1.FileName);
+
+                }
+            }
+        }
     }
+    
 }
